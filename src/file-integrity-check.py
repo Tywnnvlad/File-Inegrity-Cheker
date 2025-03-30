@@ -70,24 +70,31 @@ def encryptsha256(file_path):
 
 
 def main():
+    output = ""
+    old_stdout = sys.stdout
+    log_file = open("hash.log","w")
+    sys.stdout = log_file
+
 
     for (root,dirs,files) in os.walk('.',topdown=True):
+    # for (root,dirs,files) in os.walk('/Test',topdown=True):
         print("\n------------")
         for fileNames in files:
             filePath = os.path.join(root, fileNames)
+            output += output + "\n" + encryptsha256(filePath)
             print(encryptsha256(filePath))
+            print("\n------------")
+            
         
     
-    # old_stdout = sys.stdout
-    # log_file = open("hash.log","w")
-    # sys.stdout = log_file
-
+    
+    # print(output)
     # print ("this will be written to message.log")
 
-    # sys.stdout = old_stdout
-    # log_file.close()
+    sys.stdout = old_stdout
+    log_file.close()
     
-    
+    print(output)
      
      
      
