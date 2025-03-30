@@ -58,6 +58,7 @@ def encryptsha256(file_path):
         hash_value = sha256.hexdigest()
         print(f"SHA256({file_path}): {hash_value}")
         return hash_value
+    
     except FileNotFoundError:
         logger.error(f"File not found: {file_path}")
     except PermissionError:
@@ -67,9 +68,25 @@ def encryptsha256(file_path):
     return None
 
 
+def reset(path):
+    """Overwrite a file
+
+    Args:
+        path (path): file path to overwrite
+    """
+    f = open(path, "w")
+    f.write("")
+    print("test")
+    f.close()
+    
+    # f = open(path, "r")
+    # print(f.read())
 
 
 def main():
+    
+    reset("./hash.log")
+    
     output = ""
     old_stdout = sys.stdout
     log_file = open("hash.log","w")
@@ -78,16 +95,14 @@ def main():
 
     for (root,dirs,files) in os.walk('.',topdown=True):
     # for (root,dirs,files) in os.walk('/Test',topdown=True):
-        print("\n------------")
+
         for fileNames in files:
             filePath = os.path.join(root, fileNames)
-            output += output + "\n" + encryptsha256(filePath)
-            print(encryptsha256(filePath))
-            print("\n------------")
+            # output += output + "\n" + encryptsha256(filePath)
+            encryptsha256(filePath)
+            
             
         
-    
-    
     # print(output)
     # print ("this will be written to message.log")
 
