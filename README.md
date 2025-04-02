@@ -6,7 +6,7 @@ A Python script to monitor file integrity within a directory by comparing SHA256
 
 This script provides a simple way to detect changes, additions, or deletions of files within a specified directory (and its subdirectories). It works by:
 
-1.  **Generating** a baseline: Calculating the SHA256 hash for each file and storing it in a log file (`src/hash.log`).
+1.  **Generating** a baseline: Calculating the SHA256 hash for each file and storing it in a log file (`log/hash.log`).
 2.  **Verifying** against the baseline: Recalculating hashes for current files and comparing them to the stored hashes in the log file.
 
 This is useful for ensuring that critical files haven't been tampered with or accidentally modified.
@@ -29,29 +29,29 @@ This is useful for ensuring that critical files haven't been tampered with or ac
 
 ## Usage
 
-The script is run from the command line using `python src/file-integrity-check.py` followed by an optional command.
+The script is run from the command line using `python log/file-integrity-check.py` followed by an optional command.
 
 **Commands:**
 
 1.  **`generate`**: Create or update the baseline hash log.
     ```bash
-    python src/file-integrity-check.py generate
+    python log/file-integrity-check.py generate
     ```
-    This command scans the current directory (`.`) and saves the hashes to `src/hash.log`. **Warning:** This overwrites the existing `src/hash.log`.
+    This command scans the current directory (`.`) and saves the hashes to `log/hash.log`. **Warning:** This overwrites the existing `log/hash.log`.
 
-2.  **`verify`**: Compare the current state of files against the baseline in `src/hash.log`. This is the **default** action if no command is specified.
+2.  **`verify`**: Compare the current state of files against the baseline in `log/hash.log`. This is the **default** action if no command is specified.
     ```bash
-    python src/file-integrity-check.py verify
+    python log/file-integrity-check.py verify
     ```
     or simply:
     ```bash
-    python src/file-integrity-check.py
+    python log/file-integrity-check.py
     ```
     This command will print a report detailing any mismatches, missing files, or new files found.
 
 3.  **`help`**: Display the help message with usage instructions.
     ```bash
-    python src/file-integrity-check.py help
+    python log/file-integrity-check.py help
     ```
 
 ## How it Works
