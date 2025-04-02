@@ -65,4 +65,4 @@ The script is run from the command line using `python src/file-integrity-check.p
 The script automatically skips the following during hashing and verification:
 *   The `.git` directory.
 *   Python bytecode files (`.pyc`).
-*   The hash log file itself (`src/hash.log`).
+*   The hash log file itself (`log/hash.log`).
